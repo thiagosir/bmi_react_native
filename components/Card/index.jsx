@@ -8,7 +8,9 @@ export const Card = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#666",
+    backgroundColor: "#6930C3",
+    borderColor: "#5E60CE",
+    borderWidth: 1,
     padding: 16,
     borderRadius: 8,
     margin: 16,
