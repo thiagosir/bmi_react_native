@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+import { colors } from "../constants";
 
 export const Card = (props) => {
   const { children } = props;
@@ -8,8 +9,8 @@ export const Card = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#6930C3",
-    borderColor: "#5E60CE",
+    backgroundColor: colors.shape,
+    borderColor: colors.blackMedium,
     borderWidth: 1,
     padding: 16,
     borderRadius: 8,

@@ -1,20 +1,22 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import { Button } from "./components/Button";
-import { Card } from "./components/Card";
-import { Input } from "./components/Input";
+import { StyleSheet, Text, View } from "react-native";
+import { colors } from "./src/constants";
+import { Card } from "./src/components/Card";
+import { Input } from "./src/components/Input";
+import { Button } from "./src/components/Button";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Card>
-        <Input label="Peso" value="" />
+        <Input label="Peso" />
 
-        <Input label="Altura" value="" />
+        <Input label="Altura" />
 
         <Button title="Calcular" />
 
-        <Button title="Limpar" type="secondary" />
+        <Button title="Limpar" secondary />
       </Card>
 
       <StatusBar style="auto" />
@@ -25,7 +27,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f3ecff",
+    backgroundColor: colors.background,
     alignItems: "center",
     justifyContent: "center",
   },

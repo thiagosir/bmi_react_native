@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
+import { colors } from "../constants";
 
-export function Button({ onPress, title, type }) {
-  const backgroundColor = type === "secondary" ? "#7400B8" : "#4EA8DE";
+export function Button({ onPress, title, secondary }) {
+  const backgroundColor = secondary ? colors.purpleLight : colors.purple;
 
   const buttonStyles = { ...styles.button, backgroundColor };
 
@@ -15,17 +16,17 @@ export function Button({ onPress, title, type }) {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: "#4EA8DE",
-    borderColor: "#5E60CE",
-    borderWidth: 1,
-    padding: 16,
-    borderRadius: 8,
     flexDirection: "row",
     justifyContent: "center",
+    backgroundColor: colors.purple,
+    borderWidth: 1,
+    padding: 16,
     marginVertical: 8,
+    borderColor: colors.purple,
+    borderRadius: 8,
   },
   buttonText: {
-    color: "#fff",
+    color: colors.white,
     fontSize: 18,
     fontWeight: "500",
   },
