@@ -1,58 +1,63 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import { colors } from "../constants";
 import { Card } from "../components/Card";
-import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 
 export function Home({ navigation }) {
-  const [weight, setWeight] = useState(0.0);
-  const [height, setHeight] = useState(0.0);
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
 
-  const handleCalculate = () => {
-    const value = (1.0 * weight) / (height * height);
-    alert(value);
+  const clear = () => {
+    setWeight("");
+    setHeight("");
   };
 
-  const handleClear = () => {
-    navigation.navigate("Result");
-    setWeight(0.0);
-    setHeight(0.0);
-  };
+  const calculate = () => {
+    const w = parseFloat(weight);
+    const h = parseFloat(height) / 100;
 
-  const handleWeight = (text) => {
-    const num = parseFloat(text);
-    setWeight(num);
-  };
+    if (isNaN(w) || isNaN(h)) {
+      alert("Please enter a valid weight and height");
+      clear();
+      return;
+    }
+    const result = w / (h * h);
 
-  const handleHeight = (text) => {
-    const num = parseFloat(text);
-    setHeight(num);
+    navigation.navigate("Result", { imc: result });
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Calculadora de IMC</Text>
       <Card>
-        <Input
-          label="Peso"
-          keyboardType="numeric"
-          value={weight}
-          onChangeText={handleWeight}
-          returnKeyType="next"
-        />
+        <View style={styles.inputWrapper}>
+          <Text style={styles.label}>Peso</Text>
 
-        <Input
-          label="Altura"
-          keyboardType="numeric"
-          value={height}
-          onChangeText={handleHeight}
-          returnKeyType="next"
-        />
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={weight}
+            onChangeText={(text) => setWeight(text)}
+            returnKeyType="next"
+          />
+        </View>
 
-        <Button title="Calcular" onPress={handleCalculate} />
+        <View style={styles.inputWrapper}>
+          <Text style={styles.label}>Altura</Text>
 
-        <Button title="Limpar" onPress={handleClear} secondary />
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={height}
+            onChangeText={(text) => setHeight(text)}
+            returnKeyType="next"
+          />
+        </View>
+
+        <Button title="Calcular" onPress={calculate} />
+
+        <Button title="Limpar" onPress={() => undefined} secondary />
       </Card>
     </View>
   );
@@ -65,9 +70,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  inputWrapper: {
+    width: "100%",
+    marginBottom: 24,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     color: colors.white,
+  },
+  label: {
+    fontSize: 18,
+    color: colors.white,
+    marginBottom: 8,
+  },
+  input: {
+    backgroundColor: colors.inputs,
+    borderColor: colors.purple,
+    borderRadius: 8,
+    padding: 16,
+    height: 64,
+    width: "100%",
+    fontSize: 24,
+    color: colors.gray,
   },
 });
