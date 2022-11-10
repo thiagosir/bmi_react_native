@@ -3,16 +3,12 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { colors } from "../constants";
 
-export function Input({ onChangeText, value, label }) {
+export function Input({ label, ...rest }) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
 
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={value}
-      />
+      <TextInput style={styles.input} {...rest} />
     </View>
   );
 }
@@ -32,9 +28,9 @@ export const styles = StyleSheet.create({
     borderColor: colors.purple,
     borderRadius: 8,
     padding: 16,
-    height: 50,
+    height: 64,
     width: "100%",
-    fontSize: 16,
+    fontSize: 24,
     color: colors.gray,
   },
 });

@@ -1,26 +1,29 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { colors } from "./src/constants";
-import { Card } from "./src/components/Card";
-import { Input } from "./src/components/Input";
-import { Button } from "./src/components/Button";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Home } from "./src/screens/Home";
+import { Result } from "./src/screens/Result";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Card>
-        <Input label="Peso" />
-
-        <Input label="Altura" />
-
-        <Button title="Calcular" />
-
-        <Button title="Limpar" secondary />
-      </Card>
-
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Nome">
+        <Stack.Screen
+          name="Nome"
+          component={Home}
+          options={{ title: "Inicio" }}
+        />
+        <Stack.Screen
+          name="Result"
+          component={Result}
+          options={{ title: "Resultado" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
