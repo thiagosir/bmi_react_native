@@ -57,7 +57,7 @@ export function Home({ navigation }) {
 
         <Button title="Calcular" onPress={calculate} />
 
-        <Button title="Limpar" onPress={() => undefined} secondary />
+        <Button title="Limpar" onPress={clear} secondary />
       </Card>
     </View>
   );
