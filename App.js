@@ -15,12 +15,12 @@ export default function App() {
         <Stack.Screen
           name="Nome"
           component={Home}
-          options={{ title: "Inicio", headerStyle: {backgroundColor: colors.purpleLight}, statusBarTranslucent: true }}
+          options={{ title: "Inicio", headerStyle: {backgroundColor: colors.purpleLight}}}
         />
         <Stack.Screen
           name="Result"
           component={Result}
-          options={{ title: "Resultado", headerStyle: {backgroundColor: colors.purpleLight}, statusBarTranslucent: true  }}
+          options={{ title: "Resultado", headerStyle: {backgroundColor: colors.purpleLight}}}
         />
       </Stack.Navigator>
     </NavigationContainer>

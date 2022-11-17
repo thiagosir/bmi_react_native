@@ -17,7 +17,7 @@ export function Result({ navigation, route }) {
       </Card>
       <Card>
         <View>
-        <Text style={styles.results}> Sua classificação de IMC é {alerta} </Text>
+        <Text style={styles.results}> Você está na classificação -- {alerta} </Text>
         </View>
       </Card>
     </View>
@@ -44,5 +44,6 @@ const styles = StyleSheet.create({
   results: {
     fontSize: 16,
     color: colors.orange,
+    alignItems: "center"
   },
 });

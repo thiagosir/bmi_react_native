@@ -32,17 +32,17 @@ export function Home({ navigation }) {
     let alerta = '';
 
     if(result >= 40.0){
-      alerta = "obesidade classe III"
+      alerta = "Obesidade classe III"
     }else if(result >= 35.00){
-      alerta = "obesidade classe II"
+      alerta = "Obesidade classe II"
     }else if (result >= 30.00){
-      alerta = "obesidade classe I"
+      alerta = "Obesidade classe I"
     }else if(result >= 25.00){
-      alerta = "acima do peso"
+      alerta = "Acima do peso"
     }else if(result >= 18.6){
-      alerta = "peso normal"
+      alerta = "Peso normal"
     }else{
-      alerta = "desnutrido"
+      alerta = "Desnutrido"
     }
 
     return alerta
@@ -114,5 +114,5 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 24,
     color: colors.gray,
-  },
+  }
 });
