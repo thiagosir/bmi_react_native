@@ -23,9 +23,30 @@ export function Home({ navigation }) {
       return;
     }
     const result = w / (h * h);
+    const alerta = resultImc(result)
 
-    navigation.navigate("Result", { imc: result });
+    navigation.navigate("Result", { imc: result, alerta: alerta });
   };
+
+  const resultImc = (result) => {
+    let alerta = '';
+
+    if(result >= 40.0){
+      alerta = "obesidade classe III"
+    }else if(result >= 35.00){
+      alerta = "obesidade classe II"
+    }else if (result >= 30.00){
+      alerta = "obesidade classe I"
+    }else if(result >= 25.00){
+      alerta = "acima do peso"
+    }else if(result >= 18.6){
+      alerta = "peso normal"
+    }else{
+      alerta = "desnutrido"
+    }
+
+    return alerta
+  }
 
   return (
     <View style={styles.container}>
